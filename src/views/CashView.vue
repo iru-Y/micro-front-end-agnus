@@ -45,7 +45,7 @@ export default defineComponent({
   border-color: black;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 2px 2px black;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 h1 {
   display: flex;

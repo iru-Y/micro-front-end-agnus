@@ -46,7 +46,9 @@ export default defineComponent({
   display: flex;
   margin-top: 20px;
   justify-content: space-around;
-  box-shadow: 0 0 2px 2px black;
+  border-color: black;
+  border-radius: 8px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
   font-size: 18px;
   p{
     color: #064554;

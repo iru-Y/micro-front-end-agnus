@@ -1,11 +1,10 @@
 <template>
-    <button class="custom-button"> {{ name }} </button>
-
+    <button class="custom-button" onclick={{ func }}> {{ name }} </button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
+import { ref } from 'vue';
 export default defineComponent({
   name: 'DefaultButton',
   props:{
@@ -20,9 +19,29 @@ export default defineComponent({
     name: {
       type: String,
       default: ''
-    }
+    },
+    func :{
+      type: (function),
+      default: ()=>{}
+    }}
   }
 })
+
+
+
+const showModal = ref(false);
+
+const openModal = () => {
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+defineExpose({ openModal, closeModal });
+
+
 </script>
 
 <style lang="css" scoped>
