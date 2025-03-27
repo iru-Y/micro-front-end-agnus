@@ -1,29 +1,42 @@
 <template>
   <div class="cash_closure">
     <h1>Fechamento de caixa</h1>
-    <div class="group-edit-button">
-      <button>Adicionar Movimentação/Despesa</button>
-      <button>Editar Caixa</button>
+    <div>
+      <DefaultButton name="Adicionar Movimentação/Despesa"/>
+      <DefaultButton name="Editar Caixa"/>
     </div>
     <h2>Adicionar Caixa</h2>
-    <p>Código da loja</p>
+    <p>Código da Loja</p>
     <select id="cod_loja" name="cod_loja">
         <option value="">Selecione a loja</option>
     </select>
-    <FormField />
+      <FormField name="Nome da loja"/>
+      <FormField name="Venda Líquida"/>
+      <FormField name="Valor disponível para depósito"/>
+      <div>
+        <DefaultButton name="Adicionar"/>
+        <DefaultButton name="Gerar Registro de Caixa" color='#008000' hover-color="#00B300"/>
+        </div>
+        <MovExp/>
   </div>
 </template>
 
 <script lang="ts">
+
+import DefaultButton from '@/components/DefaultButton.vue';
+import FormField from '@/components/FormField.vue';
+import MovExp from '@/components/MovExp.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CashRegister',
-});
+  components: {
+    FormField, DefaultButton, MovExp
+  }}
+);
 </script>
 
 <style lang="css" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .cash_closure {
   display: flex;
   flex-direction: column;
@@ -36,33 +49,27 @@ export default defineComponent({
 }
 h1 {
   display: flex;
-  color: #006178;
-  font-family: 'Poppins', sans-serif;
+  color: #064554;
   justify-content: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+
 }
 h2 {
-  display: flex;
-  color: #006178;
-  font-family: 'Poppins', sans-serif;
+  color: #064554;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 900;
 }
-p {
-  font-family: 'Poppins', sans-serif;
+p{
+  font-size: 14px;
 }
-.group-edit-button {
-  display: flex;
-  justify-content: start;
-  align-items: start;
-}
-.group-edit-button button {
-  padding: 10px 20px;
-  margin-right: 10px;
+select {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #064554;
-  color: white;
-  border: none;
-  cursor: pointer;
 }
-.group-edit-button button:hover {
-  background-color: #006178;
-}
+
 </style>
