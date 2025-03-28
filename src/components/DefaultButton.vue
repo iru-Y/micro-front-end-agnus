@@ -1,10 +1,12 @@
 <template>
-    <button class="custom-button" onclick={{ func }}> {{ name }} </button>
+    <button class="custom-button"
+    @click="handleClick"
+   >
+     {{ name }} </button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ref } from 'vue';
 export default defineComponent({
   name: 'DefaultButton',
   props:{
@@ -20,43 +22,33 @@ export default defineComponent({
       type: String,
       default: ''
     },
-    func :{
-      type: (function),
-      default: ()=>{}
-    }}
+    width: {
+      type: String,
+      default: ''
+    },
+    height: {
+      type: String,
+      default: ''
+    }
+
+  },
+  emits: ['click'],
+  methods: {
+    handleClick(){
+      this.$emit('click')
+    }
   }
-})
-
-
-
-const showModal = ref(false);
-
-const openModal = () => {
-  showModal.value = true;
-};
-
-const closeModal = () => {
-  showModal.value = false;
-};
-
-defineExpose({ openModal, closeModal });
-
+  }
+)
 
 </script>
 
 <style lang="css" scoped>
-.custom-button {
-  padding: 10px 20px;
+
+button{
   margin-right: 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: white;
-  background-color: v-bind(color);
-  border: none;
-  cursor: pointer;
-}
-.custom-button:hover {
-  background-color: v-bind(hoverColor);
+  width:v-bind(width);
+  height: v-bind(height);
 }
 
 </style>

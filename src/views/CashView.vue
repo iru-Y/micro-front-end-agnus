@@ -2,7 +2,7 @@
   <div class="cash_closure">
     <h1>Fechamento de caixa</h1>
     <div>
-      <DefaultButton name="Adicionar Movimentação/Despesa"/>
+      <DefaultButton  @click="openModal" width="" name="Adicionar Movimentação/Despesa"/>
       <DefaultButton name="Editar Caixa"/>
     </div>
     <h2>Adicionar Caixa</h2>
@@ -18,6 +18,8 @@
         <DefaultButton name="Gerar Registro de Caixa" color='#008000' hover-color="#00B300"/>
         </div>
         <MovExp/>
+
+        <MovExpModal :show="modalVisible" @close="modalVisible = false"/>
   </div>
 </template>
 
@@ -26,17 +28,43 @@
 import DefaultButton from '@/components/DefaultButton.vue';
 import FormField from '@/components/FormField.vue';
 import MovExp from '@/components/MovExp.vue';
-import { defineComponent } from 'vue';
+import MovExpModal from '@/modal/MovExpModal.vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'CashRegister',
   components: {
-    FormField, DefaultButton, MovExp
-  }}
+    FormField, DefaultButton, MovExp, MovExpModal
+  },
+  setup() {
+      const modalVisible = ref(false)
+
+      const openModal = () => {
+        modalVisible.value = true;
+      }
+
+
+      return { modalVisible, openModal};
+  }
+}
 );
+
+
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
+@media screen and (min-width: 760px) and (max-width: 1199px) {
+  .container {
+    max-width: 760px;
+  }
+}
+@media screen and (max-width: 759px) {
+  .container {
+    max-width: 480px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
 .cash_closure {
   display: flex;
   flex-direction: column;
@@ -64,6 +92,7 @@ h2 {
 p{
   font-size: 14px;
 }
+
 select {
   margin-bottom: 10px;
   width: 100%;
@@ -71,5 +100,24 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+  button {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(#44dafd, #16c7f1);
+  border: none;
+  border-radius: 0.5rem;
+  color: #064554; /* Valor de $blue-16 */
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
 
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+button:hover {
+
+  background: linear-gradient(#3ac7e7, #13b1d9);
+}
 </style>
