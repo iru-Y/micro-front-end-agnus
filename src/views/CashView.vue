@@ -59,11 +59,7 @@ export default defineComponent({
   }
 }
 @media screen and (max-width: 759px) {
-  .container {
-    max-width: 480px;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
+
 }
 .cash_closure {
   display: flex;
@@ -105,7 +101,7 @@ select {
   background: linear-gradient(#44dafd, #16c7f1);
   border: none;
   border-radius: 0.5rem;
-  color: #064554; /* Valor de $blue-16 */
+  color: #064554; 
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
 

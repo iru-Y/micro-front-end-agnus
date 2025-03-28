@@ -3,18 +3,27 @@
     <div class="modal-overlay">
         <div class="modal-content">
             <h1>Movimentações e Despesas do Dia</h1>
-            <button @click="closemodal" v-if="show">x</button>
+            <button @click="closemodal" v-if="show" >x</button>
         </div>
-
+          <div class="add-mov-exp">
+            <FormField name="Movimentação" :marginBottom="'0px'" :show-checkbox="true"/>
+            <FormField name="Despesa" :show-checkbox="true"/>
+          </div>
+          <div class="add-value">
+            <FormField name="valor"/>
+            <FormField name="valor"/>
+          </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import FormField from '@/components/FormField.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'MovExpModal',
   components: {
+    FormField
   },
   props: {
     show: Boolean
@@ -51,7 +60,6 @@ export default defineComponent({
   border-color: black;
   border-radius: 8px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
-  display: flex;
 
   border-radius: 20px;
 }
@@ -62,16 +70,39 @@ export default defineComponent({
   margin-right: 20px;
 }
 button{
-  background: transparent;
   width: 0;
   height: 0;
+  font-size: 20px;
+  background: none;
   border: none;
   color: black;
-  font-size: 30px;
   font-weight: bold;
   cursor: pointer;
-} h1{
+  outline: none;
+
+} button:hover{
+  width: 0;
+  height: 0;
+  background: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+ h1{
   flex-grow: 1;
   text-align: center;
 }
+.add-mov-exp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.add-value{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 </style>
